@@ -189,6 +189,7 @@ RUN apt-get install -y bc bison bsdmainutils build-essential ccache cgpt cron \
 # RUN git lfs install
 
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
+RUN sed -i "s/env python/python3/" /usr/local/bin/repo
 RUN chmod a+x /usr/local/bin/repo
 
 # Set the work directory
