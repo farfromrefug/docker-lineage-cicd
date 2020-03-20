@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER Nicola Corna <nicola@corna.info>
 
 # Environment variables
@@ -179,9 +179,9 @@ RUN apt-get -qqy upgrade
 
 RUN apt-get install -y bc bison bsdmainutils build-essential ccache cgpt cron \
       curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick kmod \
-      lib32ncurses5-dev lib32readline-dev lib32z1-dev libesd0-dev liblz4-tool \
+      lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 \
       libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 \
-      libxml2-utils lsof lzop maven openjdk-8-jdk pngcrush procps python3 rsync \
+      libxml2-utils lsof lzop maven openjdk-11-jdk pngcrush procps python3 rsync \
       schedtool squashfs-tools wget xdelta3 xsltproc yasm zip zlib1g-dev
 
 #required for opengapps pico, uncomment to use
@@ -189,8 +189,9 @@ RUN apt-get install -y bc bison bsdmainutils build-essential ccache cgpt cron \
 # RUN git lfs install
 
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
-RUN sed -i "s/env python/python3/" /usr/local/bin/repo
 RUN chmod a+x /usr/local/bin/repo
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
 # Set the work directory
 ########################
