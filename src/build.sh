@@ -75,7 +75,7 @@ if [ "$LOCAL_MIRROR" = true ]; then
   fi
 
   echo ">> [$(date)] Syncing mirror repository" | tee -a "$repo_log"
-  repo sync --force-sync --no-clone-bundle &>> "$repo_log"
+  repo sync --force-sync --no-clone-bundle -j`nproc` &>> "$repo_log"
 fi
 
 for branch in ${BRANCH_NAME//,/ }; do
