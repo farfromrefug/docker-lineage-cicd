@@ -18,6 +18,8 @@ RUN chmod a+x /usr/local/bin/repo
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
+RUN ln -sf /proc/self/mounts /etc/mtab
+
 # Environment variables
 #######################
 
