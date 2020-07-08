@@ -152,6 +152,9 @@ ENV OPENDELTA_BUILDS_JSON ''
 # not sure yet if necessary or helpful
 # ENV JAVA_TOOL_OPTIONS "-Xmx6g"
 
+# Disable SSE4.2 requirement for cpu
+ENV CPU_SSE42 false
+
 # You can optionally specify a USERSCRIPTS_DIR volume containing these scripts:
 #  * begin.sh, run at the very beginning
 #  * before.sh, run after the syncing and patching, before starting the builds
