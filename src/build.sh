@@ -139,7 +139,7 @@ for branch in ${BRANCH_NAME//,/ }; do
 
     echo ">> [$(date)] Syncing branch repository" | tee -a "$repo_log"
     builddate=$(date +%Y%m%d)
-    repo sync -c --force-sync &>> "$repo_log"
+    repo sync -c --force-sync --force-remove-dirty &>> "$repo_log"
 
 
     android_version=$(sed -n -e 's/^\s*PLATFORM_VERSION\.QP1A := //p' build/core/version_defaults.mk)
