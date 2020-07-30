@@ -56,6 +56,6 @@ if __name__ == "__main__":
 
             ET.SubElement(xmlout, 'project', attrib=attributes)
 
-    xmlstr = minidom.parseString(ET.tostring(xmlout)).toprettyxml(indent="  ", encoding="UTF-8")
+    xmlstr = minidom.parseString(ET.tostring(xmlout)).toprettyxml(indent="  ", encoding="UTF-8").decode('utf-8')
     with open(args.out, "w") as f:
         f.write(xmlstr)
