@@ -149,8 +149,7 @@ ENV DELETE_OLD_LOGS 0
 ENV OPENDELTA_BUILDS_JSON ''
 
 # set the java tool options max memory size
-# not sure yet if necessary or helpful
-# ENV JAVA_TOOL_OPTIONS "-Xmx6g"
+ENV JAVA_TOOL_OPTIONS "-Xmx2g"
 
 # Disable SSE4.2 requirement for cpu
 ENV CPU_SSE42 false
