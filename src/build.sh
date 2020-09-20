@@ -335,6 +335,11 @@ for branch in ${BRANCH_NAME//,/ }; do
           /root/userscripts/pre-build.sh $codename &>> "$DEBUG_LOG"
         fi
 
+        # Rename output package if CUSTOM_PACKAGES contains GmsCore
+        if [[ $CUSTOM_PACKAGES == *"GmsCore"* ]]; then
+          sed -i "s|lineage-|lineage-microg-|" "$PWD/vendor/$vendor/build/tasks/bacon.mk"
+        fi
+
         # Start the build
         echo ">> [$(date)] Starting build for $codename, $branch branch" | tee -a "$DEBUG_LOG"
         build_successful=false
