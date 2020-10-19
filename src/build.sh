@@ -128,6 +128,8 @@ for branch in ${BRANCH_NAME//,/ }; do
         themuppets_branch=lineage-17.0
       elif [[ $branch =~ .*lineage-17\.1.* ]]; then
         themuppets_branch=lineage-17.1
+      elif [[ $branch =~ .*lineage-18\.0.* ]]; then
+        themuppets_branch=lineage-18.0
       else
         themuppets_branch=lineage-15.1
         echo ">> [$(date)] Can't find a matching branch on github.com/TheMuppets, using $themuppets_branch"
@@ -194,6 +196,7 @@ for branch in ${BRANCH_NAME//,/ }; do
         8.*  )    patch_name="android_frameworks_base-O.patch" ;;
 	9*  )    patch_name="android_frameworks_base-P.patch" ;; #not sure why 9 not 9.0 but here's a fix that will work until android 90
 	10*  )    patch_name="android_frameworks_base-Q.patch" ;;
+        11*  )    patch_name="android_frameworks_base-R.patch" ;;
       esac
 
       if ! [ -z $patch_name ]; then
@@ -231,6 +234,8 @@ for branch in ${BRANCH_NAME//,/ }; do
           patch --quiet -p1 -i "/root/location_services_patches/$patch_name"
         git clean -q -f
         cd ../..
+      elif [ "$android_version" = 11* ]; then
+        echo ">> [$(date)] WARNING: unifiednlp support patch not found for Android version 11! Skipping it until debug is not complete."
       else
         echo ">> [$(date)] ERROR: can't find a unifiednlp support patch for the current Android version ($android_version)"
         exit 1
