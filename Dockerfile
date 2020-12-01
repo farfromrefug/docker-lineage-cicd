@@ -10,7 +10,7 @@ RUN apt-get -qq update && apt-get -qqy upgrade && \
       lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev \
       libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lsof lzop maven \
       openjdk-11-jdk pngcrush procps python3 rsync schedtool squashfs-tools \
-      wget xdelta3 xsltproc yasm zip zlib1g-dev
+      wget xdelta3 xsltproc yasm zip zlib1g-dev unzip
 
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo \
       > /usr/local/bin/repo && chmod a+x /usr/local/bin/repo
