@@ -345,6 +345,38 @@ docker run \
     -v "/home/user/manifests:/srv/local_manifests" \
     lineageos4microg/docker-lineage-cicd
 ```
+or create
+```
+docker create \
+    -e "BRANCH_NAME=lineage-17.1" \
+    -e "USE_CCACHE=1" \
+    -e "USER=root" \
+    -e "CCACHE_SIZE=50G" \
+    -e "DEVICE_LIST=lineage_a3y17lte-userdebug" \
+    -e "SIGN_BUILDS=false" \
+    -e "CLEAN_AFTER_BUILD=false" \
+    -e "CLEAN_OUTDIR=false" \
+    -e "LOCAL_MIRROR=false" \
+    -e "BUILD_OVERLAY=false" \
+    -e "INCLUDE_PROPRIETARY=false" \
+    -e "RELEASE_TYPE=UNOFFICIAL" \
+    -e "OTA_URL=https://ota.akylas.fr" \
+    -e "USER_NAME=farfromrefug" \
+    -e "USER_MAIL=martin.guillon@akylas.fr" \
+    -e "SIGNATURE_SPOOFING=true" \
+    -e "WITH_SU=false" \
+    -e "INCLUDE_PROPRIETARY=false" \
+    -e "ANDROID_JACK_VM_ARGS=-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G" \
+    -v "/volume1/docker/lineage/src:/srv/src" \
+    -v "/volume1/docker/lineage/zips:/srv/zips" \
+    -v "/volume1/docker/lineage/logs:/srv/logs" \
+    -v "/volume1/docker/lineage/ccache:/srv/ccache" \
+    -v "/volume1/docker/lineage/mirror:/srv/mirror" \
+    -v "/volume1/docker/lineage/tmp:/srv/tmp" \
+    -v "/volume1/docker/lineage/keys:/srv/keys" \
+    -v "/volume1/docker/lineage/local_manifests:/srv/local_manifests" \
+    lineage
+```
 
 
 [docker-ubuntu]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
